@@ -38,6 +38,7 @@ function App() {
 
     useEffect(() => {
         getCurrentLocation();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
