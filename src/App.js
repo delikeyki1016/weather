@@ -31,24 +31,32 @@ function App() {
     // 현재 위치 날씨 api 가져오기
     const getWeatherByCurrentLocation = async (lat, lon) => {
         // &units=metric => 섭씨 사용
-        let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${API_KEY}&units=metric`;
-        setLoading(true);
-        let response = await fetch(url);
-        let data = await response.json();
-        // console.log(data);
-        setWeather(data);
-        setLoading(false);
+        try {
+            let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${API_KEY}&units=metric`;
+            setLoading(true);
+            let response = await fetch(url);
+            let data = await response.json();
+            console.log(data);
+            setWeather(data);
+            setLoading(false);
+        } catch (e) {
+            console.log("error msg", e);
+        }
     };
 
     // 도시이름으로 api 가져오기
     const getWeatherByCityName = async () => {
-        let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
-        setLoading(true);
-        let response = await fetch(url);
-        let data = await response.json();
-        console.log(data);
-        setWeather(data);
-        setLoading(false);
+        try {
+            let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+            setLoading(true);
+            let response = await fetch(url);
+            let data = await response.json();
+            console.log(data);
+            setWeather(data);
+            setLoading(false);
+        } catch (e) {
+            console.log("error msg", e);
+        }
     };
 
     useEffect(() => {
