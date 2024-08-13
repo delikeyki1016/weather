@@ -1,16 +1,22 @@
 import React from "react";
 
 const WeatherBox = ({ weather }) => {
-    console.log(weather);
     return (
         <div className="box">
-            <h1 className="title">현재 위치: {weather && weather.name}</h1>
+            <h1 className="title">
+                현재 위치: <strong>{weather && weather.name}</strong>
+            </h1>
             <ul>
-                <li>현재날씨: {weather?.weather[0].description}</li>
-                <li>현재온도 섭씨: {weather?.main.temp}</li>
                 <li>
-                    현재온도 화씨:
-                    {weather && Math.round(weather.main.temp * (9 / 5) + 32)}
+                    현재날씨: <strong>{weather?.weather[0].description}</strong>
+                </li>
+                <li>
+                    현재온도: <strong>{weather?.main.temp}</strong>°C &#47;{" "}
+                    <strong>
+                        {weather &&
+                            Math.round(weather.main.temp * (9 / 5) + 32)}
+                    </strong>
+                    °F
                 </li>
             </ul>
         </div>
